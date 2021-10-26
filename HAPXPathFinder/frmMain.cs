@@ -14,6 +14,7 @@ namespace HAPXPathFinder
         public FrmMain()
         {
             InitializeComponent();
+            wbMain.ScriptErrorsSuppressed = true;
         }
 
         private void btnGo_Click(object sender, EventArgs e)
