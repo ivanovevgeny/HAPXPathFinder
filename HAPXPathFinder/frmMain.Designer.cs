@@ -57,6 +57,8 @@
             this.btnFindXPath = new System.Windows.Forms.Button();
             this.txtXPath = new System.Windows.Forms.TextBox();
             this.waitNavigateTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblNodesCount = new System.Windows.Forms.Label();
+            this.cxExpandAll = new System.Windows.Forms.CheckBox();
             this.tpDOMTree.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -159,6 +161,7 @@
             this.searchResultListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.searchResultListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchResultListView.HideSelection = false;
             this.searchResultListView.Location = new System.Drawing.Point(0, 0);
             this.searchResultListView.Name = "searchResultListView";
             this.searchResultListView.Size = new System.Drawing.Size(254, 630);
@@ -311,9 +314,9 @@
             // 
             this.panel4.Controls.Add(this.scXPathResult);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 31);
+            this.panel4.Location = new System.Drawing.Point(3, 59);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(969, 630);
+            this.panel4.Size = new System.Drawing.Size(969, 602);
             this.panel4.TabIndex = 11;
             // 
             // scXPathResult
@@ -329,7 +332,7 @@
             // scXPathResult.Panel2
             // 
             this.scXPathResult.Panel2.Controls.Add(this.pgXPathResult);
-            this.scXPathResult.Size = new System.Drawing.Size(969, 630);
+            this.scXPathResult.Size = new System.Drawing.Size(969, 602);
             this.scXPathResult.SplitterDistance = 476;
             this.scXPathResult.TabIndex = 9;
             // 
@@ -340,7 +343,7 @@
             this.tvXPathResult.HideSelection = false;
             this.tvXPathResult.Location = new System.Drawing.Point(0, 0);
             this.tvXPathResult.Name = "tvXPathResult";
-            this.tvXPathResult.Size = new System.Drawing.Size(476, 630);
+            this.tvXPathResult.Size = new System.Drawing.Size(476, 602);
             this.tvXPathResult.TabIndex = 0;
             this.tvXPathResult.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvXPathResult_AfterSelect);
             // 
@@ -349,17 +352,19 @@
             this.pgXPathResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgXPathResult.Location = new System.Drawing.Point(0, 0);
             this.pgXPathResult.Name = "pgXPathResult";
-            this.pgXPathResult.Size = new System.Drawing.Size(489, 630);
+            this.pgXPathResult.Size = new System.Drawing.Size(489, 602);
             this.pgXPathResult.TabIndex = 0;
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.cxExpandAll);
+            this.panel3.Controls.Add(this.lblNodesCount);
             this.panel3.Controls.Add(this.btnFindXPath);
             this.panel3.Controls.Add(this.txtXPath);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(969, 28);
+            this.panel3.Size = new System.Drawing.Size(969, 56);
             this.panel3.TabIndex = 10;
             // 
             // btnFindXPath
@@ -388,6 +393,29 @@
             // 
             this.waitNavigateTimer.Interval = 1000;
             this.waitNavigateTimer.Tick += new System.EventHandler(this.waitNavigateTimer_Tick);
+            // 
+            // lblNodesCount
+            // 
+            this.lblNodesCount.AutoSize = true;
+            this.lblNodesCount.Location = new System.Drawing.Point(68, 32);
+            this.lblNodesCount.Name = "lblNodesCount";
+            this.lblNodesCount.Size = new System.Drawing.Size(35, 13);
+            this.lblNodesCount.TabIndex = 11;
+            this.lblNodesCount.Text = "Count";
+            // 
+            // cxExpandAll
+            // 
+            this.cxExpandAll.AutoSize = true;
+            this.cxExpandAll.Checked = true;
+            this.cxExpandAll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cxExpandAll.Location = new System.Drawing.Point(7, 31);
+            this.cxExpandAll.Name = "cxExpandAll";
+            this.cxExpandAll.Size = new System.Drawing.Size(62, 17);
+            this.cxExpandAll.TabIndex = 12;
+            this.cxExpandAll.Text = "Expand";
+            this.cxExpandAll.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.cxExpandAll.UseVisualStyleBackColor = true;
+            this.cxExpandAll.CheckedChanged += new System.EventHandler(this.cxExpandAll_CheckedChanged);
             // 
             // FrmMain
             // 
@@ -459,6 +487,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnFindXPath;
         private System.Windows.Forms.TextBox txtXPath;
+        private System.Windows.Forms.CheckBox cxExpandAll;
+        private System.Windows.Forms.Label lblNodesCount;
     }
 }
 

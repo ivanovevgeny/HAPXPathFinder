@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using HtmlAgilityPack;
 
@@ -134,7 +135,10 @@ namespace HAPXPathFinder
                     tvXPathResult.Nodes.Add(tn);
                 }
 
-                tvXPathResult.ExpandAll();
+                if (cxExpandAll.Checked) 
+                    tvXPathResult.ExpandAll();
+
+                lblNodesCount.Text = $"Count: {hnc.Count}";
             }
             catch
             {
@@ -174,8 +178,16 @@ namespace HAPXPathFinder
             HtmlAgilityPack.HtmlDocument hd;
             try
             {
-                var hw = new HtmlWeb();
-                hd = hw.Load(txtURL.Text);
+                if (wbMain.Url.IsFile)
+                {
+                    hd = new HtmlAgilityPack.HtmlDocument();
+                    hd.LoadHtml(File.ReadAllText(wbMain.Url.AbsolutePath));
+                }
+                else
+                {
+                    var hw = new HtmlWeb();
+                    hd = hw.Load(txtURL.Text);
+                }
             }
             catch (ArgumentException)
             {
@@ -225,6 +237,15 @@ namespace HAPXPathFinder
         {
             if (e.KeyCode == Keys.Enter)
                 FindXPath();
+        }
+
+        private void cxExpandAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as CheckBox).Checked)
+                tvXPathResult.ExpandAll();
+            else
+                tvXPathResult.CollapseAll();
+
         }
     }
 }
